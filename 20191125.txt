@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<title dir="rtl" style="font-family:arial; color:#AA9401;">This is document title</title>
+	
+</head>
+<body>
+	<h1 dir="ltr" style="font-family:arial; color:#FAF098;">This is a heading</h1>
+	<h3 dir="ltr" title="Hello HTML!">Titled Heading Tag Example</h3>
+	<i> <p dir="ltr" style="font-family:arial; color:#FF0000;">Some text...</p></i>
+	<i> <p dir="ltr" style="font-family:arial; color:#2DF230;">Document content goes here.....</p></i>
+	<i> <p align="center" style="font-family:arial; color:#456789;" id="html">This para explains what is HTML</p></i>
+	<i> <p align="right" style="font-family:arial; color:#999000;" id="css">This para explains what is Cascading Style Sheet</p></i>
+	<b><div valig="middle" nalign="center" style="font-family:arial; color:#DDAAFF;">Hello World!!!</div></b>
+	
+</body>
+</html>
