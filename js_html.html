@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>In Console</h2>
+<script>
+var hadShower = true;
+var hasBackpack = false;
+console.log("1 hadShower && hasBackpack");
+console.log(hadShower && hasBackpack);
+
+var hadShower = true;
+var hasBackpack = true;
+hadShower && hasBackpack;
+console.log("2 hadShower && hasBackpack");
+console.log(hadShower && hasBackpack);
+
+var hasApple = true;
+var hasOrange = false;
+console.log("1 hasApple || hasOrange;");
+console.log(hasApple || hasOrange);
+
+var hasApple = false;
+var hasOrange = false;
+console.log("2 hasApple || hasOrange;");
+console.log(hasApple || hasOrange);
+
+var isWeekend = true;
+var needToShowerToday = !isWeekend;
+console.log("1 needToShowerToday;");
+console.log(needToShowerToday);
+
+var isWeekend = !true;
+var needToShowerToday = !isWeekend;
+console.log("2 needToShowerToday;");
+console.log(needToShowerToday);
+
+var isWeekend = false;
+var hadShower = true;
+var hasApple = false;
+var hasOrange = true;
+var shouldGoToSchool = !isWeekend && hadShower && (hasApple || hasOrange);
+console.log("1 shouldGoToSchool;");
+console.log(shouldGoToSchool);
+
+var isWeekend = !false;
+var hadShower = !true;
+var hasApple = !false;
+var hasOrange = true;
+var shouldntGoToSchool = isWeekend;
+console.log("2 shouldntGoToSchool;");
+console.log(shouldntGoToSchool);
+
+var height = 155;
+var heightRestriction = 150;
+console.log("1 height > heightRestriction;");
+console.log(height > heightRestriction);
+
+var height = 150;
+var heightRestriction = 150;
+console.log("2 height > heightRestriction;");
+console.log(height > heightRestriction);
+
+var height = 150;
+var heightRestriction = 150;
+console.log("1 height >= heightRestriction;");
+console.log(height >= heightRestriction);
+
+var height = 150;
+var heightRestriction = 333;
+console.log("1 height >= heightRestriction;");
+console.log(height >= heightRestriction);
+
+var height = 150;
+var heightRestriction = 120;
+console.log("1 height < heightRestriction;");
+console.log(height < heightRestriction);
+
+var height = 150;
+var heightRestriction = 333;
+console.log("2 height < heightRestriction;");
+console.log(height < heightRestriction);
+
+var height = 120;
+var heightRestriction = 120;
+console.log("1 height <= heightRestriction;");
+console.log(height <= heightRestriction);
+
+var height = 120;
+var heightRestriction = 120;
+console.log("2 height <= heightRestriction;");
+console.log(height <= heightRestriction);
+
+var mySecretNumber = 5;
+var chicoGuess = 3;
+console.log("1 mySecretNumber === chicoGuess;");
+console.log(mySecretNumber === chicoGuess);
+
+var harpoGuess = 7;
+console.log("1 mySecretNumber === harpoGuess;");
+console.log(mySecretNumber === harpoGuess);
+
+var grouchoGuess = 5;
+console.log("1 mySecretNumber === grouchoGuess;");
+console.log(mySecretNumber === grouchoGuess);
+
+var stringNumber = "5";
+var actualNumber = 5;
+console.log("1 stringNumber === actualNumber;");
+console.log(stringNumber === actualNumber);
+console.log("2 stringNumber == actualNumber;");
+console.log(stringNumber == actualNumber);
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html> 
