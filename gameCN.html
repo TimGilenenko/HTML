@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<body onload="init()">
+ <table border="1" width="600px" height="600px" align="center" cellpadding="0">
+    <tr>
+		<td width="200px" height="200px">
+			<a href="" onclick="clicked(0, 0); return false;">
+				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
+			</a>
+		</td>
+		<td>
+			<a href="" onclick="clicked(0, 1); return false;">
+				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
+			</a>
+		</td>
+		<td>
+			<a href="" onclick="clicked(0, 2); return false;">
+				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
+			</a>	
+		</td>
+    </tr>
+    <tr>
+		<td width="200px" height="200px">
+			<a href="" onclick="clicked(1, 0); return false;">
+				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
+			</a>
+		</td>
+		<td>
+			<a href="" onclick="clicked(1, 1); return false;">
+				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
+			</a>
+		</td>
+		<td>
+			<a href="" onclick="clicked(1, 2); return false;">
+				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
+			</a>	
+		</td>
+    </tr>
+    <tr>
+		<td width="200px" height="200px">
+			<a href="" onclick="clicked(2, 0); return false;">
+				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
+			</a>
+		</td>
+		<td>
+			<a href="" onclick="clicked(2, 1); return false;">
+				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
+			</a>
+		</td>
+		<td>
+			<a href="" onclick="clicked(2, 2); return false;">
+				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
+			</a>	
+		</td>
+    </tr>
+ </table>
+
+
+
+
+<script>
+
+var SIZE;
+var matrix;
+
+function init() {
+	SIZE = 3;
+	matrix = new Array(SIZE);
+	for (var i = 0; i <= SIZE-1; i++) { 
+		matrix[i] = []; 
+	}
+}
+
+function clicked(aRow, aCol) {
+	//alert(""+aRow+" "+aCol);
+	
+	matrix[aRow][aCol] = "ok";
+}
+
+
+//alert("You pressed button: " + event.button);
+
+</script>
+</body>
+</html>
