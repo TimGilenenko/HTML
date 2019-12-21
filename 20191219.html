@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>In Console</h2>
+<script>
+var randomBodyParts = ["глаз", "нос", "череп"];
+console.log("var randomBodyParts = [глаз, нос, череп];");
+
+var randomAdjectives = ["вонючая", "унылая", "дурацкая"];
+console.log("var randomAdjectives = [вонючая, унылая, дурацкая];");
+
+var randomWords = ["муха", "выдра", "дубина", "мартышка", "крыса"];
+console.log("var randomWords = [муха, выдра, дубина, мартышка, крыса];");
+
+var randomBodyPart = randomBodyParts[Math.floor(Math.random() * 3)];
+console.log("var randomBodyPart = randomBodyParts[Math.floor(Math.random() * 3)];");
+
+var randomAdjective = randomAdjectives[Math.floor(Math.random() * 3)];
+console.log("var randomAdjective = randomAdjectives[Math.floor(Math.random() * 3)];");
+
+var randomWord = randomWords[Math.floor(Math.random() * 5)];
+console.log("var randomWord = randomWords[Math.floor(Math.random() * 5)];");
+
+var randomInsult = "У тебя " + randomBodyPart + " словно " + randomAdjective + " " + randomWord + "!!!";
+console.log("var randomInsult = У тебя  + randomBodyPart +  словно  + randomAdjective +   + randomWord + !!!;");
+
+console.log("randomInsult;");
+console.log(randomInsult);
+
+var randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];
+console.log("var randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];");
+
+var randomInsult = ["У тебя", randomBodyPart, "словно", randomAdjective, randomWord + "!!!"].join(" ");
+console.log("var randomInsult = [У тебя, randomBodyPart, словно, randomAdjective, randomWord + !!!].join( );");
+
+var cat = 
+{
+	"legs": 3,
+	"name": "Гармония",
+	"color": "Черепаховый"
+};
+console.log("var cat = {legs: 3, name: Гармония, color: Черепаховый };");
+
+var cat = {
+	legs: 3,
+	name: "Гармония",
+	color: "Черепаховый"
+};
+console.log("var cat = { legs: 3, name: Гармония, color: Черепаховый };");
+
+var cat = {
+legs: 3,
+"full name": "Гармония Филомена Уси-Пусечка Морган",
+color: "Черепаховый"
+};
+console.log("var cat = { legs: 3, full name: Гармония Филомена Уси-Пусечка Морган, color: Черепаховый };");
+
+var cat = { legs: 3, name: "Гармония", color: "Черепаховый" };
+console.log("var cat = { legs: 3, name: Гармония, color: Черепаховый };");
+
+console.log("cat[name];");
+console.log(cat["name"]);
+
+console.log("cat.name;");
+console.log(cat.name);
+
+var dog = { name: "Оладушек", age: 6, color: "белый", bark: "Гав тяф тяф!" };
+console.log("var dog = { name: Оладушек, age: 6, color: белый, bark: Гав тяф тяф! };");
+
+var cat = { name: "Гармония", age: 8, color: "черепаховый" };
+console.log("var cat = { name: Гармония, age: 8, color: черепаховый };");
+
+
+console.log("Object.keys(dog);");
+console.log(Object.keys(dog));
+
+console.log("Object.keys(cat);");
+console.log(Object.keys(cat));
+</script>
+</body>
+</html> 
