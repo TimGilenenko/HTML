@@ -1,63 +1,163 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body onload="init()">
 <table border="1" width="600px" height="600px" align="center" cellpadding="0">
     <tr>
 		<td width="200px" height="200px">
-			<a href="">
-				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0" onclick="clicked(0,0)"/>
+			<a href="" onclick="clicked(0, 0); return false;">
+				<img id="r0c0" src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
 			</a>
 		</td>
 		<td>
-			<a href="">
-				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0" onclick="clicked(0,1)"/>
+			<a href="" onclick="clicked(0, 1); return false;">
+				<img id="r0c1" src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
 			</a>
 		</td>
 		<td>
-			<a href="">
-				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0" onclick="clicked(0,2)"/>
+			<a href="" onclick="clicked(0, 2); return false;">
+				<img id="r0c2" src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
 			</a>	
 		</td>
     </tr>
+    <tr>
 		<td width="200px" height="200px">
-			<a href="">
-				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0" onclick="clicked(1,0)"/>
+			<a href="" onclick="clicked(1, 0); return false;">
+				<img id="r1c0" src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
 			</a>
 		</td>
 		<td>
-			<a href="">
-				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0" onclick="clicked(1,1)"/>
+			<a href="" onclick="clicked(1, 1); return false;">
+				<img id="r1c1" src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
 			</a>
 		</td>
 		<td>
-			<a href="">
-				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0" onclick="clicked(1,2)"/>
+			<a href="" onclick="clicked(1, 2); return false;">
+				<img id="r1c2" src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
 			</a>	
 		</td>
     </tr>
+    <tr>
 		<td width="200px" height="200px">
-			<a href="">
-				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0" onclick="clicked(2,0)"/>
+			<a href="" onclick="clicked(2, 0); return false;">
+				<img id="r2c0" src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
 			</a>
 		</td>
 		<td>
-			<a href="">
-				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0" onclick="clicked(2,1)"/>
+			<a href="" onclick="clicked(2, 1); return false;">
+				<img id="r2c1" src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
 			</a>
 		</td>
 		<td>
-			<a href="">
-				<img src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0" onclick="clicked(2,2)"/>
+			<a href="" onclick="clicked(2, 2); return false;">
+				<img id="r2c2" src="D:\Tima\HTML\GitRepository\images\transp.png" width="200px" height="200px" border="0"/>
 			</a>	
 		</td>
     </tr>
- </table>
+</table>
+functioncheckWinner(){}
 <script>
 
-function clicked(aRow, aCol) {
-  alert(""+aRow+aCol);
+var IMAGE_TRANSP;
+var IMAGE_CROSS;
+var IMAGE_ZERO;
+var SYMBOL_CROSS;
+var SYMBOL_ZERO;
+
+var SIZE;
+var matrix;
+var nextSymbol;
+
+function init() {
+	SIZE = 3;
+	IMAGE_TRANSP = "images\\transp.png";
+	IMAGE_CROSS = "images\\cross.png";
+	IMAGE_ZERO = "images\\zero.png";
+	SYMBOL_CROSS = "X";
+	SYMBOL_ZERO = "0";
+	
+	matrix = new Array(SIZE);
+	for (var i = 0; i <= SIZE-1; i++) { 
+		matrix[i] = new Array(SIZE);
+	}
+	
+	nextSymbol = SYMBOL_CROSS;
 }
+
+function showModelState() {
+	console.log("=================================");
+	
+	for (var aRow = 0; aRow <= SIZE-1; aRow++) { 
+		console.log("-----");
+		strRow = "";
+		for (var aCol = 0; aCol <= SIZE-1; aCol++) { 
+			currentValue = matrix[aRow][aCol];
+			if (strRow) {
+				strRow = strRow + "|";
+			}
+			if (currentValue) {
+				strRow = strRow + currentValue;
+			} else {
+				strRow = strRow + " ";
+			}
+		}
+		console.log(strRow);
+	}
+	console.log("-----");
+}
+
+function imageForSymbol(symbol) {
+	var res = "";
+	
+	if (symbol == SYMBOL_CROSS) {
+		res = IMAGE_CROSS;
+	} else if (symbol == SYMBOL_ZERO) {
+		res = IMAGE_ZERO;
+	} else {
+		res = IMAGE_TRANSP;
+	}
+	
+	return res;
+}
+
+function updateView() {
+	for (var aRow = 0; aRow <= SIZE-1; aRow++) { 
+		for (var aCol = 0; aCol <= SIZE-1; aCol++) { 
+			cellImage = document.getElementById("r"+aRow+"c"+aCol);
+			
+			correctSrc = imageForSymbol(matrix[aRow][aCol]);
+			if(cellImage.src != correctSrc) {
+				cellImage.src = correctSrc;
+			}
+		}
+	}
+}
+
+function clicked(aRow, aCol) {
+	//alert(""+aRow+" "+aCol);
+	
+	currentValue = matrix[aRow][aCol];
+	if (currentValue) {
+		alert("The cell is not empty!");
+		return;
+	}
+	
+	matrix[aRow][aCol] = nextSymbol;
+	
+	if (nextSymbol == SYMBOL_CROSS) { 
+		nextSymbol = SYMBOL_ZERO; 
+	} else {
+		nextSymbol = SYMBOL_CROSS; 
+	}
+	
+	updateView();
+	
+	
+	
+	//showModelState();
+}
+
+
 
 </script>
 </body>
-</html> 
+</html>
