@@ -125,7 +125,7 @@ function updateView() {
 			cellImage = document.getElementById("r"+aRow+"c"+aCol);
 			
 			correctSrc = imageForSymbol(matrix[aRow][aCol]);
-			if(cellImage.src != correctSrc) {
+			if (cellImage.src != correctSrc) {
 				cellImage.src = correctSrc;
 			}
 		}
@@ -133,7 +133,51 @@ function updateView() {
 }
 
 function checkWinner() {
-	//TODO
+	
+	
+	currentValue = matrix[0][0];
+	if (currentValue) {
+		if ((matrix[0][0] == matrix[0][1]) && (matrix[0][1] == matrix[0][2])) {
+			return currentValue;
+		}
+		
+		if ((matrix[0][0] == matrix[1][1]) && (matrix[1][1] == matrix[2][2])) {
+			return currentValue;
+		}
+		
+		if ((matrix[0][0] == matrix[1][0]) && (matrix[1][0] == matrix[2][0])) {
+			return currentValue;
+		} 
+	} 
+	
+	currentValue = matrix[1][1];
+	if (currentValue) {
+		if ((matrix[0][1] == matrix[1][1]) && (matrix[1][1] == matrix[2][1])) {
+			return currentValue;
+		}
+		
+		if ((matrix[1][0] == matrix[1][1]) && (matrix[1][1] == matrix[1][2])) {
+			return currentValue;
+		}
+		
+		if ((matrix[0][2] == matrix[1][1]) && (matrix[1][1] == matrix[2][0])) {
+			return currentValue;
+		} 
+	}
+	
+	currentValue = matrix[2][2];
+	if (currentValue) {
+		if ((matrix[0][2] == matrix[1][2]) && (matrix[1][2] == matrix[2][2])) {
+			return currentValue;
+		}
+		
+		if ((matrix[2][0] == matrix[2][1]) && (matrix[2][1] == matrix[2][2])) {
+			return currentValue;
+		}
+	}
+	
+
+	return "";	
 }
 
 function clicked(aRow, aCol) {
@@ -155,14 +199,14 @@ function clicked(aRow, aCol) {
 	
 	updateView();
 	
-	checkWinner();
+	var winnerIs = checkWinner();
+	if(winnerIs != "") {
+		console.log(winnerIs);
+	}
+	
 	
 	//showModelState();
 }
-
-
-//alert("You pressed button: " + event.button);
-
 </script>
 </body>
 </html>
