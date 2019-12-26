@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+var randomnumbers = [1, 23, 654, 87, 34, 9, 345, 23, 12, 90];
+
+function bubble(randomnumbers) {
+	var i;
+	var x;
+	var y;
+	for (i = 0; i < randomnumbers.length; i++) {
+		if (randomnumbers[i] > randomnumbers[i + 1]) {
+			x = randomnumbers[i]
+			y = randomnumbers[i + 1]
+			randomnumbers[i] = y
+			randomnumbers[i + 1] = x
+		}
+	}
+	return randomnumbers
+}
+alert(bubble(randomnumbers)); 
+</script>
+</body>
+</html>
