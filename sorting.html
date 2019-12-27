@@ -2,18 +2,23 @@
 <html>
 <body>
 <script>
-var randomnumbers = [1, 23, 654, 87, 34, 9, 345, 23, 12, 90];
+var randomnumbers = [654, 87, 34, 36496, 56, 29, 23, 123, 98];
 
 function bubble(randomnumbers) {
 	var i;
 	var x;
 	var y;
-	for (i = 0; i < randomnumbers.length; i++) {
-		if (randomnumbers[i] > randomnumbers[i + 1]) {
-			x = randomnumbers[i]
-			y = randomnumbers[i + 1]
-			randomnumbers[i] = y
-			randomnumbers[i + 1] = x
+	var d;
+	var f = 100;
+	
+	for (d = 0; d < f; d++) {
+		for (i = 0; i < randomnumbers.length; i++) {
+			if (randomnumbers[i] > randomnumbers[i + 1]) {
+				x = randomnumbers[i]
+				y = randomnumbers[i + 1]
+				randomnumbers[i] = y
+				randomnumbers[i + 1] = x
+			}
 		}
 	}
 	return randomnumbers
