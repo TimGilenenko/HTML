@@ -178,9 +178,10 @@ function checkWinner() {
 	return "";*/	  
 	var a;//колонка
 	var b;//рядок
-	var flagEqual = true;
+	var flagEqual;
 	
-	for (b = 0; b <= SIZE - 1; b++) {
+	/*for (b = 0; b <= SIZE - 1; b++) {
+		flagEqual = true;
 		for (a = 0; a <= SIZE - 2; a++) {
 			if (matrix[b][a]) {
 				if ((matrix[b][a] !== matrix[b][a + 1])) {
@@ -188,10 +189,15 @@ function checkWinner() {
 					break;
 				}
 			}
+			if (flagEqual == true) {
+				currentValue = matrix[b][a];
+			}
 		}
-	}
+	}*/
 	
 	for (a = 0; a <= SIZE - 1; a++) {
+		flagEqual = true;
+		
 		for (b = 0; b <= SIZE - 2; b++) {
 			if (matrix[a][b]) {
 				if ((matrix[a][b] !== matrix[a][b + 1])) {
@@ -200,8 +206,12 @@ function checkWinner() {
 				}
 			}
 		}
+		if (flagEqual == true) {
+			currentValue = matrix[a][b];//tut!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		}
 	}
 	return "";
+
 }
 
 function clicked(aRow, aCol) {
