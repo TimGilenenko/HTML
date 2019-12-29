@@ -1,0 +1,2 @@
+document.getElementById("img1").style.zIndex = "1";
+var element = document.createElement(tagName[, options]);
