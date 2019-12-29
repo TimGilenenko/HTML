@@ -62,10 +62,11 @@ var IMAGE_CROSS;
 var IMAGE_ZERO;
 var SYMBOL_CROSS;
 var SYMBOL_ZERO;
-
+var flagEqual;
 var SIZE;
 var matrix;
 var nextSymbol;
+var gameIsOver = false;
 
 function init() {
 	SIZE = 3;
@@ -134,58 +135,104 @@ function updateView() {
 
 function checkWinner() {
 	
+	for (aRow = 0; aRow <= SIZE - 1; aRow++) { 
+	
+		currentValue = matrix[aRow][0];
+		
+		if (!currentValue) {
+			continue;
+		} 
+		
+		flagEqual = true;
+		
+		for (aCol = 0; aCol <= SIZE - 1 - 1; aCol++) { 
+			if (matrix[aRow][aCol] !== matrix[aRow][aCol + 1]) {
+				flagEqual = false;
+				break;
+			}
+		}
+		
+		if (flagEqual) {
+			return currentValue;
+		} 
+	}
+	
+	for (aCol = 0; aCol <= SIZE - 1; aCol++) { 
+		
+		currentValue = matrix[0][aCol];
+		
+		if (!currentValue) {
+			continue;
+		} 
+		
+		flagEqual = true;
+		
+		for (aRow = 0; aRow <= SIZE - 1 - 1; aRow++) { 
+			if (matrix[aRow][aCol] !== matrix[aRow + 1][aCol]) {
+				flagEqual = false;
+				break;
+			}
+		}
+		
+		if (flagEqual) {
+			return currentValue;
+		} 
+	}
 	
 	currentValue = matrix[0][0];
-	if (currentValue) {
-		if ((matrix[0][0] == matrix[0][1]) && (matrix[0][1] == matrix[0][2])) {
-			return currentValue;
-		}
-		
-		if ((matrix[0][0] == matrix[1][1]) && (matrix[1][1] == matrix[2][2])) {
-			return currentValue;
-		}
-		
-		if ((matrix[0][0] == matrix[1][0]) && (matrix[1][0] == matrix[2][0])) {
-			return currentValue;
-		} 
-	} 
 	
-	currentValue = matrix[1][1];
 	if (currentValue) {
-		if ((matrix[0][1] == matrix[1][1]) && (matrix[1][1] == matrix[2][1])) {
-			return currentValue;
+		
+		flagEqual = true;
+		
+		for (var i =0;i <= SIZE - 1 - 1; i++) {
+			if( matrix[i][i] !== matrix[i + 1][i + 1]){
+				flagEqual = false;
+				break;
+			}
 		}
 		
-		if ((matrix[1][0] == matrix[1][1]) && (matrix[1][1] == matrix[1][2])) {
+		if (flagEqual) {
 			return currentValue;
-		}
-		
-		if ((matrix[0][2] == matrix[1][1]) && (matrix[1][1] == matrix[2][0])) {
-			return currentValue;
-		} 
+		}  
 	}
 	
-	currentValue = matrix[2][2];
+	aRow = 0;
+	aCol = SIZE - 1;
+	
+	currentValue = matrix[aRow][aCol];
 	if (currentValue) {
-		if ((matrix[0][2] == matrix[1][2]) && (matrix[1][2] == matrix[2][2])) {
-			return currentValue;
+		
+		flagEqual = true;
+		
+		while (aRow <= SIZE - 1 - 1) {
+			if( matrix[aRow][aCol] !== matrix[aRow + 1][aCol - 1]){
+				flagEqual = false;
+				break;
+			}
+			
+			aRow++;
+			aCol--;
 		}
 		
-		if ((matrix[2][0] == matrix[2][1]) && (matrix[2][1] == matrix[2][2])) {
+		if (flagEqual) {
 			return currentValue;
-		}
+		}  
 	}
 	
-
 	return "";	
 }
 
 function clicked(aRow, aCol) {
-	//alert(""+aRow+" "+aCol);
+	
+	if(gameIsOver){
+		alert("Ти взагалі!?!Гра закінчена!!!Ти програв!!!Чітер!!!");
+		return;
+	}
 	
 	currentValue = matrix[aRow][aCol];
 	if (currentValue) {
-		alert("The cell is not empty!");
+		alert("Клітинка не пуста!");
 		return;
 	}
 	
@@ -201,7 +248,8 @@ function clicked(aRow, aCol) {
 	
 	var winnerIs = checkWinner();
 	if(winnerIs != "") {
-		alert("The winner is" +" "+winnerIs);
+		alert("Переможець" +" "+winnerIs);
+		gameIsOver = true;
 	}
 	
 	
