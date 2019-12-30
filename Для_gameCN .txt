@@ -1,2 +1,6 @@
 document.getElementById("img1").style.zIndex = "1";
 var element = document.createElement(tagName[, options]);
+<script src=""></script>
+color
+<style type="text/css"></style>
+
