@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <body onload="init()">
 <table border="1" width="600px" height="600px" align="center" cellpadding="0">
@@ -62,10 +62,11 @@ var IMAGE_CROSS;
 var IMAGE_ZERO;
 var SYMBOL_CROSS;
 var SYMBOL_ZERO;
-
+var flagEqual;
 var SIZE;
 var matrix;
 var nextSymbol;
+var gameIsOver = false;
 
 function init() {
 	SIZE = 3;
@@ -133,93 +134,105 @@ function updateView() {
 }
 
 function checkWinner() {
-	/*currentValue = matrix[0][0];
-	if (currentValue) {
-		if ((matrix[0][0] == matrix[0][1]) && (matrix[0][1] == matrix[0][2])) {
-			return currentValue;
-		}
-		
-		if ((matrix[0][0] == matrix[1][1]) && (matrix[1][1] == matrix[2][2])) {
-			return currentValue;
-		}
-		
-		if ((matrix[0][0] == matrix[1][0]) && (matrix[1][0] == matrix[2][0])) {
-			return currentValue;
-		} 
-	} 
 	
-	currentValue = matrix[1][1];
-	if (currentValue) {
-		if ((matrix[0][1] == matrix[1][1]) && (matrix[1][1] == matrix[2][1])) {
-			return currentValue;
+	for (aRow = 0; aRow <= SIZE - 1; aRow++) { 
+	
+		currentValue = matrix[aRow][0];
+		
+		if (!currentValue) {
+			continue;
+		} 
+		
+		flagEqual = true;
+		
+		for (aCol = 0; aCol <= SIZE - 1 - 1; aCol++) { 
+			if (matrix[aRow][aCol] !== matrix[aRow][aCol + 1]) {
+				flagEqual = false;
+				break;
+			}
 		}
 		
-		if ((matrix[1][0] == matrix[1][1]) && (matrix[1][1] == matrix[1][2])) {
-			return currentValue;
-		}
-		
-		if ((matrix[0][2] == matrix[1][1]) && (matrix[1][1] == matrix[2][0])) {
+		if (flagEqual) {
 			return currentValue;
 		} 
 	}
 	
-	currentValue = matrix[2][2];
+	for (aCol = 0; aCol <= SIZE - 1; aCol++) { 
+		
+		currentValue = matrix[0][aCol];
+		
+		if (!currentValue) {
+			continue;
+		} 
+		
+		flagEqual = true;
+		
+		for (aRow = 0; aRow <= SIZE - 1 - 1; aRow++) { 
+			if (matrix[aRow][aCol] !== matrix[aRow + 1][aCol]) {
+				flagEqual = false;
+				break;
+			}
+		}
+		
+		if (flagEqual) {
+			return currentValue;
+		} 
+	}
+	
+	currentValue = matrix[0][0];
+	
 	if (currentValue) {
-		if ((matrix[0][2] == matrix[1][2]) && (matrix[1][2] == matrix[2][2])) {
-			return currentValue;
-		}
 		
-		if ((matrix[2][0] == matrix[2][1]) && (matrix[2][1] == matrix[2][2])) {
-			return currentValue;
-		}
-	}
-	
-
-	return "";*/	  
-	var a;//колонка
-	var b;//рядок
-	var flagEqual;
-	
-	/*for (b = 0; b <= SIZE - 1; b++) {
-		flagEqual = true;
-		for (a = 0; a <= SIZE - 2; a++) {
-			if (matrix[b][a]) {
-				if ((matrix[b][a] !== matrix[b][a + 1])) {
-					flagEqual = false;
-					break;
-				}
-			}
-			if (flagEqual == true) {
-				currentValue = matrix[b][a];
-			}
-		}
-	}*/
-	
-	for (a = 0; a <= SIZE - 1; a++) {
 		flagEqual = true;
 		
-		for (b = 0; b <= SIZE - 2; b++) {
-			if (matrix[a][b]) {
-				if ((matrix[a][b] !== matrix[a][b + 1])) {
-					flagEqual = false;
-					break;
-				}
+		for (var i =0;i <= SIZE - 1 - 1; i++) {
+			if( matrix[i][i] !== matrix[i + 1][i + 1]){
+				flagEqual = false;
+				break;
 			}
 		}
-		if (flagEqual == true) {
-			currentValue = matrix[a][b];//tut!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		}
+		
+		if (flagEqual) {
+			return currentValue;
+		}  
 	}
-	return "";
-
-}
-
-function clicked(aRow, aCol) {
-	//alert(""+aRow+" "+aCol);
+	
+	aRow = 0;
+	aCol = SIZE - 1;
 	
 	currentValue = matrix[aRow][aCol];
 	if (currentValue) {
-		alert("The cell is not empty!");
+		
+		flagEqual = true;
+		
+		while (aRow <= SIZE - 1 - 1) {
+			if( matrix[aRow][aCol] !== matrix[aRow + 1][aCol - 1]){
+				flagEqual = false;
+				break;
+			}
+			
+			aRow++;
+			aCol--;
+		}
+		
+		if (flagEqual) {
+			return currentValue;
+		}  
+	}
+	
+	return "";	
+}
+
+function clicked(aRow, aCol) {
+	
+	if(gameIsOver){
+		alert("Ти взагалі!?!Гра закінчена!!!Ти програв!!!Чітер!!!");
+		return;
+	}
+	
+	currentValue = matrix[aRow][aCol];
+	if (currentValue) {
+		alert("Клітинка не пуста!");
 		return;
 	}
 	
@@ -235,7 +248,8 @@ function clicked(aRow, aCol) {
 	
 	var winnerIs = checkWinner();
 	if(winnerIs != "") {
-		alert("The winner is" +" "+winnerIs);
+		alert("Переможець" +" "+winnerIs);
+		gameIsOver = true;
 	}
 	
 	
