@@ -1,5 +1,24 @@
-p {
-  color: red;
-  width: 500px;
-  border: 1px solid black;
+.lower{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 200px;
+	width: 200px;
+	border: 0;
+	z-index: 1;
+}
+.upper{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 200px;
+	width: 200px;
+	border: 0;
+	z-index: 2;
+}
+.div_Cell{
+	position: relative;
+	height: 600px;
+	width: 600px;
+	border: 0;
 }
